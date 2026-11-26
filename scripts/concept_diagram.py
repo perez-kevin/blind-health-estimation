@@ -114,7 +114,7 @@ for a_, b_ in [(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 5), (3, 5), (
     ax.plot([nodes[a_][0], nodes[b_][0]], [nodes[a_][1], nodes[b_][1]], color=ACC, lw=0.8, alpha=0.55, zorder=2)
 for nd in nodes:
     ax.add_patch(Circle(nd, 0.95, fc="white", ec=ACC, lw=1.3, zorder=3))
-T(CX0 + 15.5, 71.3, "Fable 5.2, extra-high\n(1 of 20 configurations)", size=9.3, color=ACC)
+T(CX0 + 15.5, 71.3, "Fable 5.2, extra-high\n(1 of 19 configurations)", size=9.3, color=ACC)
 T(CX0 + 15.5, 64.6, "no data · no web · no tools", size=9, color=GREY)
 line([CX0 + 2, CX1 - 2], [59, 59], color=LIGHT, lw=0.9)
 T(CX0 + 2.5, 56.6, "estimate (90% interval)", size=8.6, color=ACC)
@@ -123,7 +123,7 @@ tag(CX0 + 21.6, 52.9, "2", Q2C); T(CX0 + 23.6, 52.9, "5.0%  (2.5–9.5)", size=1
 
 # analysis inside the secure environment
 box(CX0, 6, CX1 - CX0, 36, ec=GREY, fc=ENCL, ls=(0, (5, 3)), lw=1.3, z=0)
-lock(CX0 + 2.4, 37.3); T(CX0 + 6.2, 38.4, "The data holder runs the analysis", size=11, weight="bold")
+lock(CX0 + 2.4, 37.3); T(CX0 + 6.2, 38.4, "A credentialed analyst runs the analysis", size=11, weight="bold")
 ax.add_patch(Polygon([(CX0 + 3.5, 21.5), (CX0 + 3.5, 32), (CX0 + 8, 32), (CX0 + 10, 30), (CX0 + 10, 21.5)], closed=True,
                      fc="white", ec=INK, lw=1.3, zorder=3))
 ax.plot([CX0 + 8, CX0 + 8, CX0 + 10], [32, 30, 30], color=INK, lw=1.0, zorder=4)
