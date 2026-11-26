@@ -189,7 +189,7 @@ ax.legend(handles=[Line2D([], [], marker="o", ls="", color=c, markersize=7, labe
           frameon=False, loc="lower right", fontsize=9)
 fig.text(0.01, 0.965, "The questions models stumble on", fontsize=15, fontweight="bold", color=INK)
 fig.text(0.01, 0.925, "12 questions where the truth most often fell outside the models' 90% intervals; "
-         "each dot is one of 20 model configurations", fontsize=9.5, color=INK2)
+         "each dot is one of the 19 current model configurations", fontsize=9.5, color=INK2)
 fig.subplots_adjust(left=0.02, right=0.98, top=0.88, bottom=0.1)
 fig.savefig("figures/fig4_stumbles.png", dpi=220)
 for r in hard:
