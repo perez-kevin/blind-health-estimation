@@ -1,0 +1,461 @@
+{
+  "estimates": [
+    {
+      "question": "M01",
+      "check": "control",
+      "definition": "control: AMA, all admissions",
+      "estimate": 0.6213967049308827,
+      "ci95": [
+        0.5863976872499066,
+        0.6563957226118587
+      ],
+      "n_admissions": 546028,
+      "n_patients": 223452
+    },
+    {
+      "question": "M01",
+      "check": "control",
+      "definition": "control: AMA, all adults 18-39",
+      "estimate": 1.0732590851285213,
+      "ci95": [
+        0.9737658046015232,
+        1.1727523656555194
+      ],
+      "n_admissions": 103796,
+      "n_patients": 56029
+    },
+    {
+      "question": "M01",
+      "check": "control",
+      "definition": "control: AMA, Medicaid all ages",
+      "estimate": 1.5072580567788236,
+      "ci95": [
+        1.3905071021941218,
+        1.6240090113635253
+      ],
+      "n_admissions": 104229,
+      "n_patients": 43260
+    },
+    {
+      "question": "M01",
+      "check": "control",
+      "definition": "control: discharge_location missing, Medicaid 18-39",
+      "estimate": 36.774364562777954,
+      "ci95": [
+        35.93589816401786,
+        37.61283096153806
+      ],
+      "n_admissions": 33953,
+      "n_patients": 16788
+    },
+    {
+      "question": "M01",
+      "check": "control",
+      "definition": "control: obstetric/delivery admission, Medicaid 18-39",
+      "estimate": 25.576532265190117,
+      "ci95": [
+        24.72667272127786,
+        26.426391809102373
+      ],
+      "n_admissions": 33953,
+      "n_patients": 16788
+    },
+    {
+      "question": "M01",
+      "check": "truth",
+      "definition": "as specified",
+      "estimate": 1.97331605454599,
+      "ci95": [
+        1.7372137212112198,
+        2.20941838788076
+      ],
+      "n_admissions": 33953,
+      "n_patients": 16788
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "exclude obstetric/delivery admissions",
+      "estimate": 2.4417270172939176,
+      "ci95": [
+        2.1353871816237344,
+        2.7480668529641004
+      ],
+      "n_admissions": 25269,
+      "n_patients": 12386
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "men only",
+      "estimate": 2.9186110891402355,
+      "ci95": [
+        2.402565935060006,
+        3.434656243220465
+      ],
+      "n_admissions": 12643,
+      "n_patients": 6012
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "women only, non-obstetric",
+      "estimate": 1.9640452997544942,
+      "ci95": [
+        1.6388580022344241,
+        2.289232597274564
+      ],
+      "n_admissions": 12627,
+      "n_patients": 6375
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "emergency/urgent/observation admissions only",
+      "estimate": 2.0275675343055815,
+      "ci95": [
+        1.7839030775182256,
+        2.271231991092937
+      ],
+      "n_admissions": 32502,
+      "n_patients": 16357
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "elective admissions only",
+      "suppressed": true
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "exclude missing discharge_location from denominator",
+      "estimate": 3.1210695486094937,
+      "ci95": [
+        2.750414077438074,
+        3.4917250197809135
+      ],
+      "n_admissions": 21467,
+      "n_patients": 12241
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "exclude in-hospital deaths",
+      "estimate": 1.9827764789440976,
+      "ci95": [
+        1.7455651332062025,
+        2.2199878246819926
+      ],
+      "n_admissions": 33791,
+      "n_patients": 16692
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "with substance-use code (F10-F19 / 291-292,303-305)",
+      "estimate": 4.116094986807388,
+      "ci95": [
+        3.574349301305095,
+        4.657840672309681
+      ],
+      "n_admissions": 11370,
+      "n_patients": 5940
+    },
+    {
+      "question": "M01",
+      "check": "alt",
+      "definition": "per patient: any AMA",
+      "estimate": 2.829401953776507,
+      "n_patients": 16788
+    },
+    {
+      "question": "M41",
+      "check": "control",
+      "definition": "control: admission has any prescription at all",
+      "estimate": 85.6863309352518,
+      "ci95": [
+        84.84108474427852,
+        86.53157712622507
+      ],
+      "n_admissions": 17375,
+      "n_patients": 8833
+    },
+    {
+      "question": "M41",
+      "check": "control",
+      "definition": "control: asthma is the principal diagnosis",
+      "estimate": 5.03021582733813,
+      "ci95": [
+        4.471551795797639,
+        5.588879858878619
+      ],
+      "n_admissions": 17375,
+      "n_patients": 8833
+    },
+    {
+      "question": "M41",
+      "check": "control",
+      "definition": "control: any IV methylpred, ALL adult admissions",
+      "estimate": 2.550235519057631,
+      "ci95": [
+        2.4901029932865257,
+        2.610368044828736
+      ],
+      "n_admissions": 546028,
+      "n_patients": 223452
+    },
+    {
+      "question": "M41",
+      "check": "truth",
+      "definition": "as specified ('methylprednisolone', route contains IV)",
+      "estimate": 4.086330935251799,
+      "ci95": [
+        3.631954428980952,
+        4.540707441522645
+      ],
+      "n_admissions": 17375,
+      "n_patients": 8833
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "methylpred or medrol, route contains IV",
+      "estimate": 4.086330935251799,
+      "ci95": [
+        3.631954428980952,
+        4.540707441522645
+      ],
+      "n_admissions": 17375,
+      "n_patients": 8833
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "methylpred, any route",
+      "estimate": 4.368345323741007,
+      "ci95": [
+        3.902610345227655,
+        4.83408030225436
+      ],
+      "n_admissions": 17375,
+      "n_patients": 8833
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "any systemic steroid (methylpred/prednisone/prednisolone/hydrocort/dexameth), any route",
+      "estimate": 16.834532374100718,
+      "ci95": [
+        15.764562579149288,
+        17.90450216905215
+      ],
+      "n_admissions": 17375,
+      "n_patients": 8833
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "restrict to admissions with any prescription",
+      "estimate": 4.7689414293390655,
+      "ci95": [
+        4.244262111016884,
+        5.293620747661247
+      ],
+      "n_admissions": 14888,
+      "n_patients": 7858
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "asthma PRINCIPAL diagnosis",
+      "estimate": 18.53546910755149,
+      "ci95": [
+        15.195858074576845,
+        21.875080140526133
+      ],
+      "n_admissions": 874,
+      "n_patients": 568
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "asthma exacerbation / status asthmaticus codes",
+      "estimate": 19.115549215406563,
+      "ci95": [
+        16.226537325164895,
+        22.004561105648232
+      ],
+      "n_admissions": 1402,
+      "n_patients": 943
+    },
+    {
+      "question": "M41",
+      "check": "alt",
+      "definition": "asthma principal, any systemic steroid any route",
+      "estimate": 67.84897025171624,
+      "ci95": [
+        64.1499592333045,
+        71.54798127012799
+      ],
+      "n_admissions": 874,
+      "n_patients": 568
+    },
+    {
+      "question": "M41",
+      "check": "stratum",
+      "definition": "ICD-10 era only (J45)",
+      "estimate": 4.520131678906052,
+      "ci95": [
+        3.7804060036513043,
+        5.2598573541608005
+      ],
+      "n_admissions": 7898,
+      "n_patients": 4452
+    },
+    {
+      "question": "M41",
+      "check": "stratum",
+      "definition": "ICD-9 era only (493)",
+      "estimate": 3.7244144334247733,
+      "ci95": [
+        3.217349482804055,
+        4.231479384045492
+      ],
+      "n_admissions": 9478,
+      "n_patients": 5103
+    }
+  ],
+  "listings": {
+    "M01 insurance values (all admissions)": {
+      "Medicare": 244576,
+      "Private": 173399,
+      "Medicaid": 104229,
+      "Other": 14006,
+      "(missing)": 9355,
+      "No charge": 463
+    },
+    "M01 discharge_location values (Medicaid 18-39)": {
+      "HOME": 16455,
+      "(missing)": 12486,
+      "HOME HEALTH CARE": 2453,
+      "AGAINST ADVICE": 670,
+      "PSYCH FACILITY": 521,
+      "REHAB": 331,
+      "SKILLED NURSING FACILITY": 253,
+      "CHRONIC/LONG TERM ACUTE CARE": 239,
+      "OTHER FACILITY": 173,
+      "DIED": 164,
+      "ACUTE HOSPITAL": 146,
+      "HOSPICE": 57,
+      "ASSISTED LIVING": "<11",
+      "HEALTHCARE FACILITY": "<11"
+    },
+    "M01 admission_type values (Medicaid 18-39)": {
+      "EU OBSERVATION": 10885,
+      "URGENT": 8069,
+      "EW EMER.": 7402,
+      "OBSERVATION ADMIT": 3427,
+      "DIRECT OBSERVATION": 1555,
+      "SURGICAL SAME DAY ADMISSION": 1124,
+      "DIRECT EMER.": 959,
+      "ELECTIVE": 327,
+      "AMBULATORY OBSERVATION": 205
+    },
+    "M41 drug strings matching methylpred/medrol/solu (all prescriptions)": {
+      "MethylPREDNISolone Sodium Succ": 30842,
+      "Methylprednisolone": 3234,
+      "MethylPREDNISolone Na Suc": 1921,
+      "Morphine Sulfate (Oral Solution) 2 mg/mL": 1589,
+      "Morphine Sulfate (Concentrated Oral Solution) 20 mg/mL": 993,
+      "LeVETiracetam Oral Solution": 964,
+      "ValGANCIclovir Oral Solution": 890,
+      "Hydromorphone (Oral Solution) 1 mg/1 mL": 812,
+      "LevETIRAcetam Oral Solution": 807,
+      "Methadone (Oral Solution)  2 mg/1 mL": 800,
+      "Methadone (Concentrated Oral Solution) 10 mg/1 mL": 683,
+      "Click Change <--- to Choose a Base Solution": 460,
+      "Clindamycin 1% Solution": 399,
+      "MethylPREDNISolone Sod Succ ": 289,
+      "Naphazoline-Pheniramine Ophth. Solution": 229,
+      "Tranexamic Acid Oral Solution": 214,
+      "Papain 2.5 % Solution": 158,
+      "RisperiDONE Oral Solution": 154,
+      "LeVETiracetam Solution": 142,
+      "PrednisoLONE Oral Solution": 126,
+      "Lithium Oral Solution": 124,
+      "Fluocinolone Acetonide 0.01% Solution": 103,
+      "Entecavir Oral Solution": 99,
+      "Emtricitabine Oral Solution": 80,
+      "Solution": 71,
+      "Theophylline (Oral Solution)": 68,
+      "LORazepam Oral Solution": 64,
+      "Ritonavir (Oral Solution)": 53,
+      "Abacavir Oral Solution": 52,
+      "Clindamycin Solution": 52,
+      "Methylprednisolone ACETATE": 50,
+      "Risperidone Oral Solution": 47,
+      "Click Change to Choose a Base Solution": 41,
+      "RISperidone Oral Solution": 40,
+      "Methylprednisolone Na Succ": 32,
+      "Orthopedic Solution": 25,
+      "Methylprednisolone Acetate": 21,
+      "Acetic Acid 2% Otic Solution": 21,
+      "methylPREDNISolone acetate": 14,
+      "MethylPREDNISolone": "<11"
+    },
+    "M41 routes of methylprednisolone prescriptions": {
+      "IV": 32994,
+      "PO": 3231,
+      "IV DRIP": 85,
+      "IM": 62,
+      "INTERSPACE": 19,
+      "PB": 14,
+      "ORAL": 13,
+      "INTRA-ARTERIALLY": "<11",
+      "IV BOLUS": "<11",
+      "IA": "<11",
+      "SC": "<11"
+    },
+    "M41 systemic steroid drug strings (prednis|hydrocort|dexameth)": {
+      "PredniSONE": 99399,
+      "Dexamethasone": 54240,
+      "MethylPREDNISolone Sodium Succ": 30842,
+      "Hydrocortisone Na Succ.": 16101,
+      "Hydrocortisone": 6568,
+      "PrednisoLONE Acetate 1% Ophth. Susp.": 4598,
+      "Methylprednisolone": 3234,
+      "Dexamethasone Sod Phosphate": 2623,
+      "Hydrocortisone (Rectal) 2.5% Cream": 2480,
+      "MethylPREDNISolone Na Suc": 1921,
+      "Hydrocortisone Cream 1%": 1865,
+      "Dexamethasone Sod Phos": 1835,
+      "Hydrocortisone Cream 2.5%": 1090,
+      "Hydrocortisone Cream 0.5%": 928,
+      "Hydrocortisone Acetate Suppository": 674,
+      "Hydrocortisone Na Succ": 412,
+      "PrednisoLONE Acetate 0.12% Ophth. Susp.": 325,
+      "Hydrocortisone Oint 2.5%": 304,
+      "Dexamethasone Oral Soln (0.1mg/1mL)": 299,
+      "Hydrocortisone Na Succinate": 294,
+      "Hydrocortisone Enema": 293,
+      "MethylPREDNISolone Sod Succ ": 289,
+      "Tobramycin-Dexamethasone Ophth Oint": 279,
+      "Hydrocortisone Acetate 10%  Foam": 264,
+      "Tobramycin-Dexamethasone Ophth Susp": 229,
+      "Hydrocortisone Acetate Ointment 1%": 218,
+      "Dexamethasone Ophthalmic Soln 0.1%": 212,
+      "Dexamethasone Ophthalmic Susp 0.1%": 155,
+      "Hydrocortisone Oint 1%": 138,
+      "PrednisoLONE Oral Solution": 126
+    },
+    "M41 asthma code positions (seq_num 1 = principal, all ages)": {
+      "6+": 32055,
+      "5": 4632,
+      "4": 4413,
+      "3": 3927,
+      "2": 2718,
+      "1": 2583
+    }
+  }
+}
