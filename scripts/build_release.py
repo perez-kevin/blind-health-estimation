@@ -15,7 +15,7 @@ FILES = ["questions.json", "mimic/questions_mimic.json", "aou/questions_aou.json
          "scripts/analyze.py", "scripts/codebook.py", "mimic/mimic_truth.py", "mimic/mimic_audit.py",
          "aou/aou_truth.py", "scripts/run_api.py", "scripts/relative_error.py", "scripts/api_summary.py",
          "scripts/api_plots.py", "scripts/api_suppl_plots.py", "scripts/release_date_plot.py",
-         "scripts/audit_nhanes.py", "scripts/concept_diagram.py", "scripts/build_release.py", "scripts/fig3_combined.py", "scripts/build_suppl_data.py", "scripts/interval_quality.py", "figures/interval_quality.csv",
+         "scripts/audit_nhanes.py", "scripts/concept_diagram.py", "scripts/build_release.py", "scripts/fig3_combined.py", "scripts/build_suppl_data.py", "scripts/interval_quality.py", "figures/interval_quality.csv", "scripts/justify_docx.py",
          "figures/api_results.csv", "figures/relative_error.csv", "figures/question_difficulty.csv"]
 
 for p in glob.glob(f"{OUT}/*"):

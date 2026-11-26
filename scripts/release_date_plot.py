@@ -29,9 +29,9 @@ RELEASE = {  # model family -> release date
     "Gemini 4 neon": "2026-11-18"}
 SMALL = {"Sonnet 5.5", "Haiku 5.5", "GPT-6 luna", "Gemini 3.8 Flash", "Gemini 3 Flash"}
 LABEL = {  # label offsets (points) for the models named on the chart
-    "GPT-4.1": (0, -14), "GPT-5": (0, -14), "Gemini 3 Flash": (0, 14), "Opus 4.6": (0, 14),
+    "GPT-4.1": (0, 14), "GPT-5": (0, -14), "Gemini 3 Flash": (0, -14), "Opus 4.6": (0, 14),
     "Gemini 3.1 Pro": (0, -14), "GPT-5.5": (0, 14), "Opus 4.8": (0, -14), "Opus 5": (0, 14),
-    "Fable 5.2": (-10, 0), "GPT-6.2 astra": (-10, 0), "Gemini 4 neon": (-10, 10)}
+    "Fable 5.2": (-10, 0), "GPT-6.2 astra": (-10, 0), "Gemini 4 neon": (8, 0)}
 
 best = {}
 for r in csv.DictReader(open("figures/api_results.csv")):
@@ -40,7 +40,7 @@ for r in csv.DictReader(open("figures/api_results.csv")):
     if base not in best or q < best[base][0]:
         best[base] = (q, r["provider"])
 
-fig, ax = plt.subplots(figsize=(11, 8.6))  # same shape as figures/api_cost.png (Figure 3a)
+fig, ax = plt.subplots(figsize=(8.5, 6.2))  # same shape as figures/api_cost.png (Figure 3a)
 ax.set_yscale("log")
 ax.axvspan(dt.date(2026, 9, 1), dt.date(2026, 11, 22), color="#f1f0ec", zorder=0)
 ax.text(dt.date(2026, 9, 4), 0.505, "current models\n(reference panel)", fontsize=8.5, color=MUTED, va="top")
@@ -62,17 +62,18 @@ ax.axhline(1, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
 ax.text(dt.date(2025, 3, 20), 1.02, "typical error of current models", fontsize=8.5, color=MUTED, va="top")
 ax.set_ylim(1.75, 0.48)  # same range as Figure 3a  # inverted: better (lower error) is up
 ax.set_yticks([0.5, 0.7, 1, 1.4], ["0.5", "0.7", "1", "1.4"]); ax.yaxis.set_minor_locator(mtick.NullLocator())
-ax.set_xlim(dt.date(2025, 3, 1), dt.date(2026, 12, 15))
+ax.set_xlim(dt.date(2025, 3, 1), dt.date(2027, 1, 31))
+ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1, 7]))
 ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1, 4, 7, 10])); ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
 ax.grid(color=GRID, lw=0.8, zorder=0)
 ax.set_xlabel("Model release date"); ax.set_ylabel("Error ratio (log scale; lower is better, shown higher)")
 ax.legend(handles=[Line2D([], [], marker="o", ls="", color=c, markersize=9, label=PROV[p]) for p, c in COL.items()] +
           [Line2D([], [], marker="s", ls="", color=INK2, markersize=7, label="small / low-cost model"),
            Line2D([], [], color=INK2, lw=1.4, alpha=0.5, label="best flagship to date")],
-          frameon=False, loc="upper left", fontsize=9.5)
-fig.text(0.07, 0.955, "Accuracy by release date", fontsize=19, fontweight="bold", color=INK)
-fig.text(0.07, 0.915, "Each model at its best reasoning-effort setting · earlier models at default effort", fontsize=11, color=INK2)
-fig.subplots_adjust(left=0.08, right=0.97, top=0.885, bottom=0.085)
+          frameon=False, loc="upper left", fontsize=8.5)
+fig.text(0.09, 0.95, "Accuracy by release date", fontsize=15, fontweight="bold", color=INK)
+fig.text(0.09, 0.9, "Best effort setting per model · earlier models at default effort", fontsize=9.5, color=INK2)
+fig.subplots_adjust(left=0.1, right=0.97, top=0.86, bottom=0.1)
 fig.savefig("figures/fig_release_date.png", dpi=220)
 fl = [(dt.date.fromisoformat(RELEASE[b]).toordinal(), q) for b, (q, _) in best.items() if b not in SMALL]
 x, y = zip(*fl); rk = lambda v: np.argsort(np.argsort(v))
