@@ -17,7 +17,7 @@ from matplotlib.lines import Line2D
 SURF, INK, INK2, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#8b8a84", "#e9e8e4"
 COL = {"claude": "#2a78d6", "openai": "#1baf7a", "gemini": "#eb6834"}
 PROV = {"claude": "Anthropic Claude", "openai": "OpenAI GPT", "gemini": "Google Gemini"}
-plt.rcParams.update({"font.family": "sans-serif", "font.size": 10.5, "figure.facecolor": SURF, "axes.facecolor": SURF,
+plt.rcParams.update({"font.family": "sans-serif", "font.size": 11, "figure.facecolor": SURF, "axes.facecolor": SURF,
                      "savefig.facecolor": SURF, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.edgecolor": GRID, "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK2})
 RELEASE = {  # model family -> release date
@@ -40,7 +40,7 @@ for r in csv.DictReader(open("figures/api_results.csv")):
     if base not in best or q < best[base][0]:
         best[base] = (q, r["provider"])
 
-fig, ax = plt.subplots(figsize=(12, 7))
+fig, ax = plt.subplots(figsize=(11, 8.6))  # same shape as figures/api_cost.png (Figure 3a)
 ax.set_yscale("log")
 ax.axvspan(dt.date(2026, 9, 1), dt.date(2026, 11, 22), color="#f1f0ec", zorder=0)
 ax.text(dt.date(2026, 9, 4), 0.505, "current models\n(reference panel)", fontsize=8.5, color=MUTED, va="top")
@@ -60,7 +60,7 @@ for b, (q, p) in best.items():
                     ha="right" if dx < 0 else ("left" if dx > 0 else "center"))
 ax.axhline(1, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
 ax.text(dt.date(2025, 3, 20), 1.02, "typical error of current models", fontsize=8.5, color=MUTED, va="top")
-ax.set_ylim(1.9, 0.48)  # inverted: better (lower error) is up
+ax.set_ylim(1.75, 0.48)  # same range as Figure 3a  # inverted: better (lower error) is up
 ax.set_yticks([0.5, 0.7, 1, 1.4], ["0.5", "0.7", "1", "1.4"]); ax.yaxis.set_minor_locator(mtick.NullLocator())
 ax.set_xlim(dt.date(2025, 3, 1), dt.date(2026, 12, 15))
 ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1, 4, 7, 10])); ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
@@ -69,10 +69,10 @@ ax.set_xlabel("Model release date"); ax.set_ylabel("Error ratio (log scale; lowe
 ax.legend(handles=[Line2D([], [], marker="o", ls="", color=c, markersize=9, label=PROV[p]) for p, c in COL.items()] +
           [Line2D([], [], marker="s", ls="", color=INK2, markersize=7, label="small / low-cost model"),
            Line2D([], [], color=INK2, lw=1.4, alpha=0.5, label="best flagship to date")],
-          frameon=False, loc="upper left", fontsize=9)
-fig.text(0.07, 0.955, "Error ratio by release date", fontsize=17, fontweight="bold", color=INK)
-fig.text(0.07, 0.915, "Each model at its best reasoning-effort setting · earlier models at default effort", fontsize=10.5, color=INK2)
-fig.subplots_adjust(left=0.07, right=0.97, top=0.88, bottom=0.09)
+          frameon=False, loc="upper left", fontsize=9.5)
+fig.text(0.07, 0.955, "Accuracy by release date", fontsize=19, fontweight="bold", color=INK)
+fig.text(0.07, 0.915, "Each model at its best reasoning-effort setting · earlier models at default effort", fontsize=11, color=INK2)
+fig.subplots_adjust(left=0.08, right=0.97, top=0.885, bottom=0.085)
 fig.savefig("figures/fig_release_date.png", dpi=220)
 fl = [(dt.date.fromisoformat(RELEASE[b]).toordinal(), q) for b, (q, _) in best.items() if b not in SMALL]
 x, y = zip(*fl); rk = lambda v: np.argsort(np.argsort(v))
