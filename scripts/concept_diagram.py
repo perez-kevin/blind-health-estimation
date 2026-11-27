@@ -66,7 +66,6 @@ def head(x, letter, title):
 AX0, AX1 = 2, 31
 head(AX0, "a", "Three data sources")
 box(AX0, 6, AX1 - AX0, 76, ec=GREY, fc=ENCL, ls=(0, (5, 3)), lw=1.3, z=0)
-lock(AX0 + 2, 77.2); T(AX0 + 5.8, 78.3, "secure environments", size=9.5, color=GREY, weight="bold")
 for y, name, sub in [(58, "NHANES", "US national survey\npublic"),
                      (35, "MIMIC-IV", "hospital records\ncredentialed"),
                      (12, "All of Us", "US research cohort\ncontrolled tier")]:
@@ -78,15 +77,15 @@ for y, name, sub in [(58, "NHANES", "US national survey\npublic"),
 BX0, BX1 = 40, 84
 head(BX0, "b", "Example questions")
 cards = [(50, Q1C, "1", "All of Us · health record codes",
-          "“Among participants with an\nautism code, what percentage\nalso have an anxiety code?”"),
+          "“Among EHR participants with an autism\nspectrum disorder code (ICD-10 F84.0,\nICD-9 299.0), what percentage also\nhave an anxiety disorder code\n(ICD-10 F41, ICD-9 300.0)?”"),
          (16, Q2C, "2", "MIMIC-IV · admissions aged 18–49",
-          "“Among admissions coded for\nasthma, what percentage get\nintravenous methylprednisolone?”")]
+          "“Among admissions of patients aged\n18-49 coded for asthma (ICD-10 J45,\nICD-9 493), what percentage have\nan intravenous methylprednisolone\nprescription?”")]
 for y0, c, n, src, txt in cards:
     box(BX0, y0, BX1 - BX0, 30, ec=c, lw=1.9)
     tag(BX0 + 3.2, y0 + 26.3, n, c)
     T(BX0 + 5.6, y0 + 26.3, src, size=9.5, color=c, weight="bold")
-    T(BX0 + 2.6, y0 + 13, txt, size=15, style="italic")
-T(BX0, 11.5, "2 of 150 questions, 50 per dataset, each\nscreened against the literature", size=9, color=GREY, va="top")
+    T(BX0 + 2.6, y0 + 12.3, txt, size=14, style="italic")
+T(BX0, 11.5, "2 of 150 questions, 50 per dataset, shown in full;\neach screened against the literature", size=9, color=GREY, va="top")
 # sources -> questions: public documentation only
 line([AX1, 35.5], [48, 48], color=GREY, lw=1.3, ls=(0, (2, 2)))
 line([35.5, 35.5], [31, 65], color=GREY, lw=1.3, ls=(0, (2, 2)))
