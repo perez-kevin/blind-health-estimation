@@ -1,5 +1,5 @@
 """Supplementary Data 1 (Excel): model results, question difficulty, README.
-Usage (from Bench/): run relative_error.py, api_plots.py, api_suppl_plots.py first; then python3 -I scripts/build_suppl_data.py
+Usage (from the repository root): run relative_error.py, api_plots.py, api_suppl_plots.py first; then python3 -I scripts/build_suppl_data.py
 """
 import csv
 import openpyxl

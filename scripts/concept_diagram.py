@@ -3,7 +3,7 @@
 a  the three data sources -> b  two example questions (written from public documentation only)
 -> c  two ways to get the answer: a language model answering blind / the analysis run inside the secure environment
 -> d  scoring. Worked examples A38 and M41 (both in the public sample), Fable 5.2 extra-high, run 1.
-Usage (from Bench/): python3 -I scripts/concept_diagram.py  -> figures/fig0_concept.png
+Usage (from the repository root): python3 -I scripts/concept_diagram.py  -> figures/fig0_concept.png
 (The earlier layout is kept in scripts/concept_diagram_v1.py -> figures/fig0_concept_v1.png.)
 """
 import matplotlib

@@ -1,20 +1,20 @@
 """Interval informativeness: coverage with 95% CI, normalised interval width and interval score (no new API calls).
 
-Width = (hi90 - lo90) / E_q, where E_q is the question's reference error (results/reference_errors.json), so widths are
+Width = (hi90 - lo90) / E_q, where E_q is the question's reference error (reference_errors.json), so widths are
 comparable across questions; reported as the median over questions of the per-question median over runs.
 Interval score (Winkler / Gneiting-Raftery, alpha = 0.1) = width + (2/alpha) * distance of the truth outside the
 interval. A configuration's interval score ratio = 2 ** mean over questions of log2(score / reference score), with the
 reference score = median score of the 19 current configurations on that question (1 = typical, lower is better).
 95% CIs: bootstrap over questions (1,000 resamples). Writes figures/interval_quality.csv.
-Usage (from Bench/): python3 -I scripts/relative_error.py && python3 -I scripts/interval_quality.py
+Usage (from the repository root): python3 -I scripts/relative_error.py && python3 -I scripts/interval_quality.py
 """
 import json, glob, os, re, csv
 from collections import defaultdict
 import numpy as np
 
-DS = {"NHANES": ("results/ground_truth.json", "results"), "MIMIC-IV": ("mimic/mimic_ground_truth.json", "mimic/results"),
+DS = {"NHANES": ("nhanes/nhanes_ground_truth.json", "nhanes/results"), "MIMIC-IV": ("mimic/mimic_ground_truth.json", "mimic/results"),
       "All of Us": ("aou/aou_ground_truth.json", "aou/results")}
-REF = json.load(open("results/reference_errors.json"))
+REF = json.load(open("reference_errors.json"))
 EARLIER = {"opus46_api", "opus48_api", "opus5_api", "gpt41_api", "gpt5_api", "gpt55_api", "gem3_flash_api", "gem31_pro_api"}
 DROP = {"gpt62_astra_health_api", "gpt62_sol_health_api", "gpt4o_api", "gem25_pro_api"}
 ALPHA = 0.1

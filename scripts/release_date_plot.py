@@ -1,6 +1,6 @@
 """Error ratio by model release date: progression from 2025 to the current models.
 
-Usage (from Bench/): python3 -I scripts/relative_error.py && python3 -I scripts/api_plots.py && python3 -I scripts/release_date_plot.py
+Usage (from the repository root): python3 -I scripts/relative_error.py && python3 -I scripts/api_plots.py && python3 -I scripts/release_date_plot.py
   -> figures/fig_release_date.png
 Release dates: Anthropic and OpenAI from their models APIs (created date); Gemini from the Gemini API changelog
 (first API availability). Each model is shown at its best reasoning-effort setting.

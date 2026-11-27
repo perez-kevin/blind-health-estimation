@@ -2,13 +2,13 @@
 
 For each question: (1) positive controls -- component statistics with known published values, computed with the same
 variables, to show the variables are read correctly; (2) alternative definitions -- does the truth move?
-Usage (from Bench/): python3 -I scripts/audit_nhanes.py  -> results/audit_nhanes.csv
+Usage (from the repository root): python3 -I nhanes/nhanes_audit.py  -> nhanes/nhanes_audit.csv
 """
 import numpy as np, pandas as pd
 
 
 def load(n):
-    t = pd.read_sas(f"data/raw/P_{n}.xpt").set_index("SEQN")
+    t = pd.read_sas(f"nhanes/raw/P_{n}.xpt").set_index("SEQN")
     num = t.select_dtypes("number").columns
     t[num] = t[num].mask(t[num].abs() < 1e-10, 0.0)
     return t
@@ -138,5 +138,5 @@ zs2["rw"], zs2["rs"] = zs2.lwbc.rank(), zs2.SLD012.rank()
 rec("Q42", "alt", "rank (Spearman-type) correlation", zs2, lambda d: wcorr(d, "rw", "rs"))
 rec("Q42", "alt", "unweighted", zs.assign(WTMECPRP=1.0), lambda d: wcorr(d, "lwbc", "SLD012"), se=False)
 
-pd.DataFrame(rows).to_csv("results/audit_nhanes.csv", index=False)
-print("wrote results/audit_nhanes.csv")
+pd.DataFrame(rows).to_csv("nhanes/nhanes_audit.csv", index=False)
+print("wrote nhanes/nhanes_audit.csv")

@@ -1,6 +1,6 @@
 """Press-style figures for the API runs (Claude, OpenAI, Gemini; 3 repeats per dataset).
 
-Usage (from Bench/): python3 -I scripts/api_plots.py
+Usage (from the repository root): python3 -I scripts/api_plots.py
   -> figures/api_headline.png, figures/api_cost.png, figures/api_results.csv
 Score = share of questions within 10% of the truth, averaged over repeats, then over the 3 datasets.
 Error bars = range of the per-repeat 3-dataset averages. Cost = exact API token counts x list price.
@@ -22,7 +22,7 @@ plt.rcParams.update({"font.family": "sans-serif", "font.size": 11, "figure.facec
                      "savefig.facecolor": SURF, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.spines.left": False, "axes.edgecolor": GRID, "xtick.color": INK2, "ytick.color": INK2,
                      "axes.labelcolor": INK2})
-DATASETS = {"NHANES": ("results/ground_truth.json", "results"),
+DATASETS = {"NHANES": ("nhanes/nhanes_ground_truth.json", "nhanes/results"),
             "MIMIC-IV": ("mimic/mimic_ground_truth.json", "mimic/results"),
             "All of Us": ("aou/aou_ground_truth.json", "aou/results")}
 PRICE = eval(open("scripts/api_summary.py").read().split("PRICE = ", 1)[1].split("\n\n")[0])

@@ -1,5 +1,5 @@
 """Figure 3: (a) error ratio vs API cost, (b) error ratio by release date, side by side in one image.
-Usage (from Bench/): run api_plots.py and release_date_plot.py first; then python3 -I scripts/fig3_combined.py
+Usage (from the repository root): run api_plots.py and release_date_plot.py first; then python3 -I scripts/fig3_combined.py
 """
 from PIL import Image, ImageDraw, ImageFont
 

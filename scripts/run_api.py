@@ -6,17 +6,17 @@ Only question text is sent; no data and no ground truth ever leave this machine.
 
 Setup (once):
     pip install anthropic openai google-genai
-    keys in environment variables or in Bench/.env, api_keys.env or api_keys.env.txt (never commit it):
+    keys in environment variables or in .env, api_keys.env or api_keys.env.txt (never commit it):
         ANTHROPIC_API_KEY=...   OPENAI_API_KEY=...   GEMINI_API_KEY=...
 
-Usage (from Bench/):
+Usage (from the repository root):
     python3 -I scripts/run_api.py --list-models openai            # find the current model IDs
     python3 -I scripts/run_api.py --provider claude --model claude-opus-5-5 --effort xhigh --tag opus_xhigh_api --repeats 3
     python3 -I scripts/run_api.py --provider openai --model <id> --effort high --tag gpt_high --repeats 3
     python3 -I scripts/run_api.py --provider gemini --model <id> --effort high --tag gemini_high --repeats 3
     add --dry-run to print the prompt and do nothing; --datasets aou to run one dataset.
 
-Output, per dataset folder (results/, mimic/results/, aou/results/):
+Output, per dataset folder (nhanes/results/, mimic/results/, aou/results/):
     predictions_<tag>_r<n>.json     scored by scripts/leaderboard.py like the other runs
     api_raw/<tag>_r<n>.json         raw reply text, exact model version, token usage, timing
 Runs that already have a predictions file are skipped, so the script can be re-run after a failure.
@@ -25,7 +25,7 @@ import argparse, json, os, re, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATASETS = {"nhanes": ("questions.json", "results"),
+DATASETS = {"nhanes": ("nhanes/questions_nhanes.json", "nhanes/results"),
             "mimic": ("mimic/questions_mimic.json", "mimic/results"),
             "aou": ("aou/questions_aou.json", "aou/results")}
 

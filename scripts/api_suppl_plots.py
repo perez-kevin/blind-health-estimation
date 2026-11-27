@@ -1,6 +1,6 @@
 """Extra figures for the manuscript, from the API runs (3 repeats per dataset).
 
-Usage (from Bench/): python3 -I scripts/api_suppl_plots.py
+Usage (from the repository root): python3 -I scripts/api_suppl_plots.py
   figures/figS1_per_dataset.png    within-10% score per dataset, per model (mean of repeats, whiskers = repeat range)
   figures/fig3_heatmap_api.png     prediction / truth for every question x model (geometric mean over repeats)
   figures/fig4_stumbles.png        the questions most models miss: each model's prediction relative to the truth
@@ -21,7 +21,7 @@ BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 plt.rcParams.update({"font.family": "sans-serif", "font.size": 10, "figure.facecolor": SURF, "axes.facecolor": SURF,
                      "savefig.facecolor": SURF, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.edgecolor": GRID, "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK2})
-DATASETS = {"NHANES": ("results/ground_truth.json", "results", "questions.json"),
+DATASETS = {"NHANES": ("nhanes/nhanes_ground_truth.json", "nhanes/results", "nhanes/questions_nhanes.json"),
             "MIMIC-IV": ("mimic/mimic_ground_truth.json", "mimic/results", "mimic/questions_mimic.json"),
             "All of Us": ("aou/aou_ground_truth.json", "aou/results", "aou/questions_aou.json")}
 PROV_COLOR = {"claude": BLUE, "openai": AQUA, "gemini": ORANGE}
@@ -71,7 +71,7 @@ with open("figures/question_difficulty.csv", "w") as fh:
         fh.write(f'{r["ds"]},{r["q"]},{r["truth"]:.4g},{r["hit"]:.2f},{r["cov"]:.2f},{r["ratio"]:.2f},{r["n"]},"{u}","{txt}"\n')
 
 # ---------- Fig S1: per-dataset error ratio, ranked within each dataset ----------
-REF = json.load(open("results/reference_errors.json"))  # from scripts/relative_error.py
+REF = json.load(open("reference_errors.json"))  # from scripts/relative_error.py
 tags = [t for t in ORDER if t in prov]
 fig, axes = plt.subplots(1, 3, figsize=(14, 7.8))
 for ax, ds in zip(axes, DATASETS):
