@@ -66,12 +66,12 @@ def head(x, letter, title):
 AX0, AX1 = 2, 31
 head(AX0, "a", "Three data sources")
 box(AX0, 6, AX1 - AX0, 76, ec=GREY, fc=ENCL, ls=(0, (5, 3)), lw=1.3, z=0)
-for y, name, sub in [(58, "NHANES", "US national survey\npublic"),
-                     (35, "MIMIC-IV", "hospital records\ncredentialed"),
-                     (12, "All of Us", "US research cohort\ncontrolled tier")]:
-    cylinder(AX0 + 7.5, y, 8, 11)
-    T(AX0 + 13.5, y + 8.2, name, size=12.5, weight="bold")
-    T(AX0 + 13.5, y + 3.6, sub, size=9, color=GREY)
+for y, name, sub in [(62, "NHANES", "US national survey\npublic"),
+                     (38.5, "MIMIC-IV", "hospital records\ncredentialed"),
+                     (15, "All of Us", "US research cohort\ncontrolled tier")]:
+    cylinder(AX0 + 8.1, y, 8, 11)
+    T(AX0 + 14.1, y + 8.2, name, size=12.5, weight="bold")
+    T(AX0 + 14.1, y + 3.6, sub, size=9, color=GREY)
 
 # ======================= b: example questions =======================
 BX0, BX1 = 40, 84
