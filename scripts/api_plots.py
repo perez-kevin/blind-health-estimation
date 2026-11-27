@@ -89,11 +89,12 @@ with open("figures/api_results.csv", "w") as fh:
 lab = lambda r: r["name"] + ("  †" if not r["full"] else "")
 
 # ---------- Figure A: error ratio with 95% CI (dot plot, log scale) ----------
-fig, ax = plt.subplots(figsize=(8.5, 7.4))
-y = np.arange(len(rows))[::-1]
+prow = [r for r in rows if r["tag"] not in EARLIER]  # current configurations only, as in Figure 2
+fig, ax = plt.subplots(figsize=(6.2, 6.2))
+y = np.arange(len(prow))[::-1]
 ax.axvline(1, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
-ax.text(1.01, -0.6, "typical error\nacross models", fontsize=7, color=MUTED, va="top")
-for yi, r in zip(y, rows):
+ax.text(1.02, len(prow) - 1, "typical error\nacross models", fontsize=7, color=MUTED, va="center")
+for yi, r in zip(y, prow):
     c = PROV_COLOR[r["prov"]]
     ax.plot([r["qlo"], r["qhi"]], [yi, yi], color=c, lw=2.2, alpha=0.45, solid_capstyle="round", zorder=2)
     if r["tag"] in EARLIER:
@@ -101,30 +102,28 @@ for yi, r in zip(y, rows):
     else:
         ax.scatter(r["qner"], yi, s=40, color=c, edgecolor=SURF, linewidth=1.2, zorder=3)
     ax.text(r["qhi"] * 1.03, yi, f'{r["qner"]:.2f}', va="center", fontsize=7.5,
-            color=INK if r is rows[0] else INK2, fontweight="bold" if r is rows[0] else "normal")
-ax.set_yticks(y, [lab(r) for r in rows], fontsize=8)
+            color=INK if r is prow[0] else INK2, fontweight="bold" if r is prow[0] else "normal")
+ax.set_yticks(y, [lab(r) for r in prow], fontsize=8)
 ax.get_yticklabels()[0].set_fontweight("bold"); ax.get_yticklabels()[0].set_color(INK)
-for t_, r in zip(ax.get_yticklabels(), rows):
+for t_, r in zip(ax.get_yticklabels(), prow):
     if r["tag"] in EARLIER:
         t_.set_color(MUTED)
 ax.tick_params(axis="y", length=0); ax.spines["left"].set_visible(False)
-ax.set_xscale("log"); ax.set_xlim(0.4, 2.2); ax.set_ylim(-1.2, len(rows) - 0.4)
+ax.set_xscale("log"); ax.set_xlim(0.4, 2.2); ax.set_ylim(-0.7, len(prow) - 0.4)
 ax.set_xticks([0.5, 0.7, 1, 1.4, 2], ["0.5\n(half the\ntypical error)", "0.7", "1", "1.4", "2\n(twice)"])
 ax.xaxis.set_minor_locator(mtick.NullLocator()); ax.tick_params(axis="x", labelsize=8)
 ax.grid(axis="x", color=GRID, lw=0.8, zorder=0); ax.set_axisbelow(True)
 ax.set_xlabel("Error ratio relative to the typical error (log scale; lower is better)", fontsize=9)
 ax.legend(handles=[Line2D([], [], marker="o", ls="", color=c, markersize=8, label=PROV_NAME[p]) for p, c in PROV_COLOR.items()] +
-          [Line2D([], [], marker="o", ls="", markerfacecolor=SURF, markeredgecolor=INK2, markersize=8,
-                  label="Earlier model (release date)"),
-           Line2D([], [], color=INK2, lw=2.2, alpha=0.45, label="95% CI (bootstrap over questions)")],
-          frameon=False, loc="upper right", fontsize=7.5, bbox_to_anchor=(1.0, 0.95))
+          [Line2D([], [], color=INK2, lw=2.2, alpha=0.45, label="95% CI (bootstrap over questions)")],
+          frameon=False, loc="lower left", fontsize=7.5, bbox_to_anchor=(0.0, 0.0))
 fig.text(0.02, 0.965, "Error ratio, all datasets pooled", fontsize=14, fontweight="bold", color=INK)
-fig.text(0.02, 0.93, "150 questions · 3 runs per model · open markers = earlier models",
+fig.text(0.02, 0.93, "150 questions · 3 runs per model · 19 current configurations",
          fontsize=9, color=INK2)
-fig.text(0.02, 0.012, "1 = typical error of the 19 current configurations (models released Sep-Nov 2026).  "
+fig.text(0.02, 0.012, "1 = typical error of these 19 configurations (models released Sep-Nov 2026).\n"
          "Model versions as reported by each API, Nov 2026.",
          fontsize=6.5, color=MUTED)
-fig.subplots_adjust(left=0.27, right=0.97, top=0.91, bottom=0.15)
+fig.subplots_adjust(left=0.36, right=0.97, top=0.91, bottom=0.17)
 fig.savefig("figures/api_headline.png", dpi=220)
 
 # ---------- Figure B: error ratio vs cost ----------
